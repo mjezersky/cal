@@ -1,0 +1,11 @@
+.root {
+    -fx-background-color: #FFF;
+}
+
+.gridCell {
+    -fx-background-color: #e2e9ff;
+}
+
+.gridCell.selectedDay {
+    -fx-background-color: #eff3ff;
+}

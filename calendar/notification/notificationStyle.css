@@ -1,0 +1,15 @@
+/*
+ * All rights reserved (C) 2015 Matouš Jezerský
+ */
+/* 
+    Created on : Jun 2, 2015, 4:47:12 PM
+    Author     : Matouš Jezerský
+*/
+
+.mainFxmlClass {
+
+}
+
+.root {
+    -fx-background-color: rgba(255,255,255,0.5);
+}

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<AnchorPane id="AnchorPane" prefHeight="774.0" prefWidth="1061.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendar.main.GuiController">
+    <children>
+      <HBox layoutX="286.0" layoutY="199.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <AnchorPane prefHeight="697.0" prefWidth="803.0">
+               <children>
+                  <GridPane fx:id="grid" hgap="1.0" layoutX="189.0" layoutY="204.0" vgap="1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <VBox onMouseClicked="#dayClicked" styleClass="gridCell" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="3" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="4" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="5" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="6" GridPane.rowIndex="0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                        <VBox onMouseClicked="#dayClicked" prefHeight="200.0" prefWidth="100.0" styleClass="gridCell" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="752.0" text="Ab 00." />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="1249.0" text="událost 1" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="961.0" text="událost 2" />
+                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="572.0" text="..." />
+                           </children>
+                        </VBox>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="704.0" prefWidth="176.0" HBox.hgrow="ALWAYS">
+               <children>
+                    <Button fx:id="button" layoutX="58.0" layoutY="28.0" onAction="#switchDemo" text="switch" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                    <Label fx:id="label" layoutX="64.0" layoutY="98.0" minHeight="16" minWidth="69" />
+                  <Button layoutX="77.0" layoutY="67.0" mnemonicParsing="false" onAction="#notifyTest" text="notify" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <Button layoutX="458.0" mnemonicParsing="false" text="&lt;" />
+      <Button layoutX="573.0" mnemonicParsing="false" text="&gt;" />
+      <Label layoutX="496.0" layoutY="5.0" text="Říjen 2015" />
+    </children>
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+</AnchorPane>
