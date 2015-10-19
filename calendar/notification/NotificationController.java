@@ -1,12 +1,3 @@
-/*
- * All rights reserved (C) 2015 Matouš Jezerský
- */
-
-/* 
-    Created on : Jun 2, 2015, 4:47:12 PM
-    Author     : Matouš Jezerský
-*/
-
 package calendar.notification;
 
 import java.net.URL;

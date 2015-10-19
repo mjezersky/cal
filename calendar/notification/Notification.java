@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package calendar.notification;
 
 import javafx.application.Application;
@@ -13,11 +8,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * Simple Preloader Using the ProgressBar Control
- *
- * @author ASUS
- */
 public class Notification extends Application {
     
     public static final long msDuration = 1000;
