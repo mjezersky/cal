@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendar.day.DayController">
+    <stylesheets>
+        <URL value="@dayStyle.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="textLabel" alignment="CENTER" layoutX="1.0" layoutY="8.0" prefHeight="54.0" prefWidth="250.0" text="20.10.2015">
+         <font>
+            <Font name="Open Sans Bold" size="40.0" />
+         </font>
+      </Label>
+       <Label fx:id="textLabel2" alignment="CENTER" layoutX="30.0" layoutY="51.0" prefHeight="37.0" prefWidth="193.0" text="Týden č.42 (sudý)">
+           <font>
+               <Font name="Open Sans Bold" size="20.0" />
+           </font>
+       </Label>
+      <Line endX="580.0" layoutX="0.0" layoutY="95.0" startX="20" />
+      <ImageView fitHeight="91.0" fitWidth="91.0" layoutX="300.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/sunny.png" />
+         </image></ImageView>
+      <Label layoutX="391.0" layoutY="17.0" prefHeight="38.0" prefWidth="91.0" text="18°C">
+            <font>
+                <Font name="Open Sans Bold" size="28.0" />
+            </font>
+      </Label>
+       <Label layoutX="391.0" layoutY="48.0" prefHeight="28.0" prefWidth="117.0" text="Slnečno">
+           <font>
+               <Font name="Open Sans Bold" size="20.0" />
+           </font>
+       </Label>
+       <!--
+       <Line endY="80.0" layoutX="250.0" layoutY="0.0" startY="10.0" /> -->
+   </children>
+</AnchorPane>
