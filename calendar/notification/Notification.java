@@ -2,6 +2,7 @@ package calendar.notification;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
@@ -37,7 +38,7 @@ public class Notification extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("notification.fxml")));
+        Scene scene = new Scene(FXMLLoader.<Parent>load(getClass().getResource("notification.fxml")));
         stage.setScene(scene);
         stage.setTitle("Notification");
         stage.initStyle(StageStyle.TRANSPARENT);

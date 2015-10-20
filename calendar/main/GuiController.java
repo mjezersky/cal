@@ -1,5 +1,7 @@
 package calendar.main;
 
+import calendar.day.DayData;
+import calendar.day.DayWindow;
 import calendar.notification.Notification;
 import calendar.notification.NotificationData;
 import java.net.URL;
@@ -36,6 +38,13 @@ public class GuiController implements Initializable {
         Notification n = new Notification();
         NotificationData test = new NotificationData();
         test.setText("Notification");
+        n.show(test);
+    }
+
+    @FXML private void dayTest(ActionEvent evt) {
+        DayWindow n = new DayWindow();
+        DayData test = new DayData();
+        test.setText("20.10.2015");
         n.show(test);
     }
     
