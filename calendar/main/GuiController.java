@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -19,6 +20,8 @@ public class GuiController implements Initializable {
     
     @FXML private GridPane grid;
     private ObservableList days; // zobrazovane dny
+    private Contacts contacts;
+    @FXML private ListView list;
     
     @FXML private void dayClicked(MouseEvent event) {
         VBox src = (VBox) event.getSource();
@@ -37,7 +40,7 @@ public class GuiController implements Initializable {
     @FXML private void notifyTest(ActionEvent evt) {
         Notification n = new Notification();
         NotificationData test = new NotificationData();
-        test.setText("Notification");
+        test.setText("asdasd");
         n.show(test);
     }
 
@@ -48,6 +51,8 @@ public class GuiController implements Initializable {
         n.show(test);
     }
     
+    public ListView getContactsContainer() { return list; }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList boxes = grid.getChildren();
@@ -57,6 +62,8 @@ public class GuiController implements Initializable {
             Day d = new Day(i, (VBox) boxes.get(i));
             days.add(d);
         }
+        
+        contacts = new Contacts(this); // inicializace kontaktu
     }    
     
 }
