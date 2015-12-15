@@ -6,10 +6,13 @@ import calendar.event.EventData;
 import calendar.event.EventWindow;
 import calendar.notification.Notification;
 import calendar.notification.NotificationData;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,13 +23,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 public class GuiController implements Initializable {
     
     @FXML private GridPane grid;
     private ObservableList days; // zobrazovane dny
     private Contacts contacts;
-    @FXML private ListView list;
+    @FXML private ListView contactList;
     @FXML private Button testButton;
     
     private int currYear = 2015;
@@ -36,6 +41,11 @@ public class GuiController implements Initializable {
         VBox src = (VBox) event.getSource();
         int gridIndex = grid.getChildren().indexOf(src);
         Day.setSelected((Day) days.get(gridIndex));
+        
+        DayWindow n = new DayWindow();
+        DayData test = new DayData();
+        test.setText(Tools.getDateString(Day.getSelected().getDate()));
+        n.show(test);
     }
     
     @FXML private void switchDemo(ActionEvent evt) {
@@ -66,15 +76,23 @@ public class GuiController implements Initializable {
         eventWindow.show();
     }
     
-    public ListView getContactsContainer() { return list; }
+    public ListView getContactsContainer() { return contactList; }
     
     @FXML private void nextMonth(ActionEvent evt) {
-        currMonth = Tools.getNextMonth(currMonth);
+        currMonth += 1;
+        if (currMonth == 12) {
+            currMonth = 0;
+            currYear += 1;
+        }
         redrawGrid();
     }
 
     @FXML private void previousMonth(ActionEvent evt) {
-        currMonth = Tools.getPreviousMonth(currMonth);
+        currMonth -= 1;
+        if (currMonth == -1) {
+            currMonth = 11;
+            currYear -= 1;
+        }
         redrawGrid();
     }
     
@@ -93,6 +111,26 @@ public class GuiController implements Initializable {
         }
     }
     
+    public void reloadContacts() {
+        ObservableList contactsText = FXCollections.observableArrayList(new ArrayList<String>());
+        ArrayList contactsData = null;
+        try {
+            contactsData = Calendar.backend.getContacts();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (contactsData != null) {
+            for (int i=0; i<contactsData.size(); i++) {
+                contactsText.add(contactsData.get(i).toString());
+            }
+            contactList.setItems(contactsText);
+        }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList boxes = grid.getChildren();
@@ -106,9 +144,7 @@ public class GuiController implements Initializable {
         redrawGrid();
         
         contacts = new Contacts(this); // inicializace kontaktu
-        System.out.println();
-        System.out.println(Tools.getLastDayIndex(2015, 11));
-        
+        reloadContacts();
         //Tools.getDateString(Day.getSelected().getDate());
     }    
     

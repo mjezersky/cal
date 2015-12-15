@@ -17,5 +17,10 @@ public class Event {
         time=tTime;
         date=dDate;
         text=tText;
-    }    
+    }
+    
+    @Override
+    public String toString() {
+        return time + " | " + text;
+    }
 }
