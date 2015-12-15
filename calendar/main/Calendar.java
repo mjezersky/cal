@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class Calendar extends Application {
     
+    public static final Backend backend = new Backend();
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));

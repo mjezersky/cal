@@ -36,7 +36,7 @@ public class Day {
     public Date getDate() { return date; }
     public void setDate(Date d) { 
         date = d;
-        setLabel(d.toString());
+        setLabel(Tools.getDateString(date));
     }
     
     public int eventCount() { return events; }
