@@ -4,24 +4,56 @@
  * and open the template in the editor.
  */
 package calendar.main;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
-import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import java.util.*;
+import javax.xml.transform.*;
+import javax.xml.transform.stream.*;
+import javax.xml.transform.dom.*;
+import org.w3c.dom.*;
+import javax.xml.parsers.*;
+
+
 /**
  *
  * @author cepin
  */
 public  class Backend {
 
+  public void saveEvent(Event e)  throws ParserConfigurationException, SAXException, IOException, TransformerException {
+        Element day;
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        Document document = documentBuilder.parse("src/events.xml");
+        Element root = document.getDocumentElement();
+        day=document.getElementById(e.date);
+        if (day==null){
+            day = document.createElement("day");
+        }
+        Element event = document.createElement("event");
+
+        event.setAttribute("time",e.time);
+        Element text = document.createElement("text");
+        text.appendChild(document.createTextNode(e.text));
+        day.appendChild(text);
+
+        event.appendChild(text);
+        
+        root.appendChild(day);
+        DOMSource source = new DOMSource(document);
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        System.out.println("Saving");
+        StreamResult result = new StreamResult("contacts.xml");
+        transformer.transform(source, result);
+    }
+
+    
+    
+    
   public ArrayList getEvents(String date)  throws ParserConfigurationException, SAXException, IOException {
         ArrayList l=new ArrayList<Event>();   
         String text, time;
