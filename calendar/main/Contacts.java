@@ -25,14 +25,14 @@ public class Contacts {
         contactNames = FXCollections.observableList(new ArrayList<String>());
         contactData = new ArrayList<ContactData>();
         
-        addContact();
-        addContact();
+        //addContact();
+        //addContact();
     }
     
     private void addContact() {
-        contactNames.add("test");
-        contactData.add(new ContactData("jmeno", "123", "brno"));
-        refresh();
+        //contactNames.add("test");
+        //contactData.add(new ContactData("jmeno", "123", "brno"));
+        //refresh();
     }
     
     public void refresh() {
