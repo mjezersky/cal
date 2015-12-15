@@ -83,7 +83,7 @@ public  class Backend {
                         Element eElement = (Element) nNode;
                         Event e;
                        if (nNode.getNodeName()=="event"){  
-                            e=new Event(eElement.getTextContent(),eElement.getAttribute("time"),date);
+                            e=new Event(eElement.getTextContent(),date,eElement.getAttribute("time"));
                            // System.out.println("event : v " +eElement.getAttribute("time") + " casu" + eElement.getTextContent());
                             l.add(e);
                         }
