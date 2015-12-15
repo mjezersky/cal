@@ -6,6 +6,14 @@
     -fx-background-color: #e2e9ff;
 }
 
+.gridCell.unimportant {
+    -fx-background-color: #cccccc;
+}
+
 .gridCell.selectedDay {
     -fx-background-color: #eff3ff;
+}
+
+.gridCell.selectedDay.unimportant {
+    -fx-background-color: #999999;
 }

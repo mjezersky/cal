@@ -1,26 +1,21 @@
 package calendar.main;
 
-import calendar.day.DayData;
-import calendar.day.DayWindow;
 import calendar.notification.Notification;
 import calendar.notification.NotificationData;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javax.xml.parsers.ParserConfigurationException;
-import org.xml.sax.SAXException;
 
 public class GuiController implements Initializable {
     
@@ -28,8 +23,11 @@ public class GuiController implements Initializable {
     private ObservableList days; // zobrazovane dny
     private Contacts contacts;
     @FXML private ListView list;
-    private Backend backend;
-
+    @FXML private Button testButton;
+    
+    private int currYear = 2015;
+    private int currMonth = 11;
+    
     @FXML private void dayClicked(MouseEvent event) {
         VBox src = (VBox) event.getSource();
         int gridIndex = grid.getChildren().indexOf(src);
@@ -50,43 +48,51 @@ public class GuiController implements Initializable {
         test.setText("asdasd");
         n.show(test);
     }
-
-    @FXML private void dayTest(ActionEvent evt) {
-        DayWindow n = new DayWindow();
-        DayData test = new DayData();
-        String date="2015-12-15";
-        test.setText("20.10.2015");
-
-        try {
-            ArrayList <Event> l=backend.getEvents(date);
-            ArrayList <Contact> c=backend.getContacts();
-            System.out.println("event:"+ l.get(0).text );
-            System.out.println("notes:" + backend.getNotes(date));
-            System.out.println("contact:" +c.get(0).name);
-
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        n.show(test);
-    }
     
     public ListView getContactsContainer() { return list; }
+    
+    @FXML private void nextMonth(ActionEvent evt) {
+        currMonth = Tools.getNextMonth(currMonth);
+        redrawGrid();
+    }
+
+    @FXML private void previousMonth(ActionEvent evt) {
+        currMonth = Tools.getPreviousMonth(currMonth);
+        redrawGrid();
+    }
+    
+    public void redrawGrid() {
+        ArrayList displayedDays = Tools.getDaysGrid(currYear, currMonth);
+        int firstDay = Tools.getFirstDayIndex(currYear, currMonth);
+        int lastDay = Tools.getLastDayIndex(currYear, currMonth);
+        
+        Day currDay;
+        
+        for(int i=0; i<days.size(); i++) {
+            currDay = (Day) days.get(i);
+            currDay.setDate( (Date) displayedDays.get(i) );
+            if (i<firstDay || i>lastDay) currDay.setUnimportant(true);
+            else currDay.setUnimportant(false);
+        }
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList boxes = grid.getChildren();
-        backend=new Backend();
         days = FXCollections.observableArrayList();
+        Date currDay;
+        
         for (int i=0; i<6*7; i++) {
             Day d = new Day(i, (VBox) boxes.get(i));
             days.add(d);
         }
+        redrawGrid();
         
         contacts = new Contacts(this); // inicializace kontaktu
+        System.out.println();
+        System.out.println(Tools.getLastDayIndex(2015, 11));
+        
+        //Tools.getDateString(Day.getSelected().getDate());
     }    
     
 }

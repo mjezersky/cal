@@ -1,5 +1,6 @@
 package calendar.main;
 
+import java.util.Date;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +13,8 @@ public class Day {
     private final Button event1;
     private final Button event2;
     private final Button more;
+    
+    private Date date;
             
     private static Day selected = null;
     private int events = 0;
@@ -30,8 +33,21 @@ public class Day {
         more.setVisible(false);
     }
     
+    public Date getDate() { return date; }
+    public void setDate(Date d) { 
+        date = d;
+        setLabel(d.toString());
+    }
+    
     public int eventCount() { return events; }
     public static Day getSelected() { return selected; }
+    
+    public void setLabel(String text) { label.setText(text); }
+    
+    public void setUnimportant(boolean state) {
+        parent.getStyleClass().remove("unimportant");
+        if (state) parent.getStyleClass().add("unimportant");
+    }
     
     public static void setSelected(Day d) {
         // odstranim zvyrazneni predchoziho vybraneho dne

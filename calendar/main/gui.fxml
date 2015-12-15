@@ -383,13 +383,13 @@
                     <Button fx:id="button" layoutX="58.0" layoutY="28.0" onAction="#switchDemo" text="switch" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                     <Label fx:id="label" layoutX="64.0" layoutY="98.0" minHeight="16" minWidth="69" />
                   <Button layoutX="77.0" layoutY="67.0" mnemonicParsing="false" onAction="#notifyTest" text="notify" />
-                   <Button layoutX="77.0" layoutY="90.0" mnemonicParsing="false" onAction="#dayTest" text="day" />
+                  <Button fx:id="testButton" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" text="test" />
                </children>
             </AnchorPane>
          </children>
       </HBox>
-      <Button layoutX="458.0" mnemonicParsing="false" text="&lt;" />
-      <Button layoutX="573.0" mnemonicParsing="false" text="&gt;" />
+      <Button layoutX="458.0" mnemonicParsing="false" onAction="#previousMonth" text="&lt;" />
+      <Button layoutX="573.0" mnemonicParsing="false" onAction="#nextMonth" text="&gt;" />
       <Label layoutX="496.0" layoutY="5.0" text="Říjen 2015" />
     </children>
     <stylesheets>
