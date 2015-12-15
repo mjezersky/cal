@@ -22,7 +22,17 @@ import javax.xml.parsers.*;
  * @author cepin
  */
 public  class Backend {
-
+   
+    public boolean EventOnDay(String date) throws SAXException, ParserConfigurationException, IOException  {
+        File f = new File("src/events.xml");
+	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+	Document doc = dBuilder.parse(f);
+        doc.getDocumentElement().normalize();	
+        Element day=doc.getElementById(date); //pridat kontrolu, jestli v nalezenem day je nejaky event
+        return day != null;}
+    
+    
   public void saveEvent(Event e)  throws ParserConfigurationException, SAXException, IOException, TransformerException {
         Element day;
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
