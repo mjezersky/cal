@@ -1,5 +1,9 @@
 package calendar.main;
 
+import calendar.day.DayData;
+import calendar.day.DayWindow;
+import calendar.event.EventData;
+import calendar.event.EventWindow;
 import calendar.notification.Notification;
 import calendar.notification.NotificationData;
 import java.net.URL;
@@ -47,6 +51,19 @@ public class GuiController implements Initializable {
         NotificationData test = new NotificationData();
         test.setText("asdasd");
         n.show(test);
+    }
+
+    @FXML private void dayTest(ActionEvent evt) {
+        DayWindow n = new DayWindow();
+        DayData test = new DayData();
+        test.setText(Tools.getDateString(Day.getSelected().getDate()));
+        n.show(test);
+    }
+
+    @FXML private void eventTest(ActionEvent actionEvent) {
+        EventWindow eventWindow = new EventWindow();
+        EventData eventData = new EventData();
+        eventWindow.show();
     }
     
     public ListView getContactsContainer() { return list; }

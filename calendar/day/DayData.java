@@ -2,8 +2,8 @@ package calendar.day;
 
 public class DayData {
     // demo placeholder na data
-    private String lol = "";
+    private String date = "";
     
-    public void setText(String value) { lol = value; }
-    public String getText() { return lol; }
+    public void setText(String value) { date = value; }
+    public String getText() { return date; }
 }

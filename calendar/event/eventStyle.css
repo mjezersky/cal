@@ -8,6 +8,7 @@
 
 .text-area {
     -fx-background-color: rgba(2, 71, 60, 0.21);
+    -fx-font-size: 15;
 }
 
 .text-area .scroll-pane {

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="400.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="calendar.event.EventController">
+    <stylesheets>
+        <URL value="@eventStyle.css" />
+    </stylesheets>
+   <children>
+      <DatePicker fx:id="datePicker" layoutX="27.0" layoutY="14.0" prefHeight="16.0" prefWidth="103.0" />
+      <TextArea fx:id="eventString" layoutX="27.0" layoutY="50.0" prefHeight="2.0" prefWidth="347.0" />
+      <Button fx:id="btnAddEvent" layoutX="305.0" layoutY="14.0" mnemonicParsing="false" text="Add event" />
+   </children>
+</AnchorPane>
