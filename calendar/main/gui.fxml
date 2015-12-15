@@ -384,6 +384,9 @@
                     <Label fx:id="label" layoutX="64.0" layoutY="98.0" minHeight="16" minWidth="69" />
                   <Button layoutX="77.0" layoutY="67.0" mnemonicParsing="false" onAction="#notifyTest" text="notify" />
                   <Button fx:id="testButton" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" text="test" />
+
+                   <Button layoutX="77.0" layoutY="90.0" mnemonicParsing="false" onAction="#dayTest" text="day" />
+                   <Button layoutX="77.0" layoutY="120.0" mnemonicParsing="false" onAction="#eventTest" text="add event" />
                </children>
             </AnchorPane>
          </children>
