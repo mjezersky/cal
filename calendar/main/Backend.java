@@ -73,6 +73,7 @@ public  class Backend {
 	Document doc = dBuilder.parse(f);
         doc.getDocumentElement().normalize();			
 	Element day = (Element) doc.getElementById(date);
+        if (day==null) return null;
 	if (day.hasChildNodes()) {
 
             NodeList nl=day.getChildNodes();
