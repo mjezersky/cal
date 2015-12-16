@@ -1,16 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE calendar [
-<!ATTLIST day date ID #IMPLIED>  
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE calendar [<!ATTLIST day date ID #IMPLIED>
 ]>
-
-
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-
 <root>
   <day date="15.12.2015">
    <note>lol</note> 
@@ -21,4 +11,8 @@ and open the template in the editor.
         <text>asdfff</text>
     </event> 
 </day> 
-</root>
+<day date="18.12.2015"><event time="11:00"><text>test</text></event><event time="11:00"><text>test</text></event><event time="11:00"><text>test</text></event><event time="11:00"><text>test</text></event><note>nwerwereote</note></day></root><!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->

@@ -4,17 +4,29 @@
  * and open the template in the editor.
  */
 package calendar.main;
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import org.xml.sax.SAXException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.*;
 import javax.xml.transform.dom.*;
 import org.w3c.dom.*;
 import javax.xml.parsers.*;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
+import org.w3c.dom.ls.DOMImplementationLS;
+import org.w3c.dom.ls.LSOutput;
+import org.w3c.dom.ls.LSSerializer;
 
 
 /**
@@ -33,13 +45,82 @@ public  class Backend {
         return day != null;}
     
     
-  public void saveEvent(Event e)  throws ParserConfigurationException, SAXException, IOException, TransformerException {
-        Element day;
+  public void saveNote(String date, String str) {
+         Element day,note;
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document document = documentBuilder.parse("src/events.xml");
+        DocumentBuilder documentBuilder=null;
+        try {
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Document document=null;
+        try {
+            document = documentBuilder.parse("src/events.xml");
+        } catch (SAXException | IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Element root = document.getDocumentElement();
         System.out.println(root.getTagName());
+
+        day=document.getElementById(date);
+        if (day==null){
+            day = document.createElement("day");
+            day.setAttribute("date", date);
+        }
+        NodeList notes=day.getElementsByTagName("note");
+        if (notes.getLength()==0){
+            note = document.createElement("note");
+
+        }
+        else {        
+            note = (Element) notes.item(0);
+            System.out.println(note.getTextContent());
+
+        }
+        note.setTextContent(str);
+        day.appendChild(note);
+        root.appendChild(day);
+
+      
+        XMLSerializer serializer = new XMLSerializer();
+        try {
+            serializer.setOutputCharStream(new java.io.FileWriter("src/events.xml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        OutputFormat format = new OutputFormat();
+        format.setStandalone(true);
+        serializer.setOutputFormat(format);
+        try {
+            serializer.serialize(document);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+  
+  
+    
+  public void saveEvent(Event e) {
+        Element day;
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder=null;
+        try {
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Document document=null;
+        try {
+            document = documentBuilder.parse("src/events.xml");
+        } catch (SAXException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Element root = document.getDocumentElement();
 
         day=document.getElementById(e.date);
         if (day==null){
@@ -56,12 +137,21 @@ public  class Backend {
         event.appendChild(text);
         
         root.appendChild(day);
-        DOMSource source = new DOMSource(document);
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        Transformer transformer = transformerFactory.newTransformer();
-        System.out.println("Saving");
-        StreamResult result = new StreamResult("src/events.xml");
-        transformer.transform(source, result);
+      
+        XMLSerializer serializer = new XMLSerializer();
+        try {
+            serializer.setOutputCharStream(new java.io.FileWriter("src/events.xml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        OutputFormat format = new OutputFormat();
+        format.setStandalone(true);
+        serializer.setOutputFormat(format);
+        try {
+            serializer.serialize(document);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
