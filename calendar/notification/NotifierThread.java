@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Platform;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -24,6 +25,7 @@ public class NotifierThread extends Thread {
     @Override
     public void run() {
         while (true) {
+            if (Calendar.mainWindowClosed) return;
             ArrayList events = null;
             try {
                 Thread.sleep(1000);                 //1000 milliseconds is one second.
@@ -36,17 +38,27 @@ public class NotifierThread extends Thread {
             } catch(ParserConfigurationException | SAXException | IOException ex) {
                 Logger.getLogger(NotifierThread.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            System.out.println(Tools.getDateString(Tools.now()));
+            System.out.println(events==null);
             if (events != null) {
                 if (!events.isEmpty()) {
                     Event currEvt = (Event) events.get(0);
                     Date now = Tools.now();
                     Date evt = Tools.stringToDateTime(currEvt.date + " " + currEvt.time);
+                    System.out.println(now);
+                    System.out.println(evt);
                     if (now.compareTo(evt) >= 0) {
-                        Notification n = new Notification();
-                        NotificationData test = new NotificationData();
-                        test.setText(currEvt.date+" "+currEvt.time);
-                        n.show(test);
+                        
+                        Platform.runLater(new Runnable(){
+                                @Override
+                                public void run() {
+                                    Notification n = new Notification();
+                                    NotificationData test = new NotificationData();
+                                    test.setText(currEvt.date+" "+currEvt.time);
+                                    n.show(test);
+                                }
+                        });
+                        
                     }
                 }
             }

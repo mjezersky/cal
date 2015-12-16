@@ -12,9 +12,9 @@ and open the template in the editor.
 
 
 <root>
-  <day date="15.12.2015">
+  <day date="16.12.2015">
    <note>lol</note> 
-    <event time="15:00">
+    <event time="11:28">
         <text>asd</text>
     </event> 
         <event time="16:00">
