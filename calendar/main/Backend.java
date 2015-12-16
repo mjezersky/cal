@@ -44,6 +44,7 @@ public  class Backend {
         day=document.getElementById(e.date);
         if (day==null){
             day = document.createElement("day");
+            day.setAttribute("date", e.date);
         }
         Element event = document.createElement("event");
 
