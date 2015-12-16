@@ -101,7 +101,56 @@ public  class Backend {
     }
 
   
-  
+    public void deleteEvent(String date, String time){
+        Element day;
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder=null;
+        try {
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Document document=null;
+        try {
+            document = documentBuilder.parse("src/events.xml");
+        } catch (SAXException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Element root = document.getDocumentElement();
+
+        day=document.getElementById(date);
+        if (day==null){
+            return;
+        }
+        if (day.hasChildNodes()){
+            NodeList childNodes=day.getChildNodes();
+            for (int i=0;i<childNodes.getLength();i++) {
+                Node cn=childNodes.item(i);
+                Element e=(Element) cn;
+                if (e.getAttribute("time").equals(time)){
+                    System.out.println("Deleting event");
+                    day.removeChild(cn);
+                }
+            }
+        }
+        XMLSerializer serializer = new XMLSerializer();
+        try {
+            serializer.setOutputCharStream(new java.io.FileWriter("src/events.xml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        OutputFormat format = new OutputFormat();
+        format.setStandalone(true);
+        serializer.setOutputFormat(format);
+        try {
+            serializer.serialize(document);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
   public void saveEvent(Event e) {
         Element day;
