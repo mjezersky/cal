@@ -6,6 +6,7 @@ import calendar.event.EventData;
 import calendar.event.EventWindow;
 import calendar.notification.Notification;
 import calendar.notification.NotificationData;
+import calendar.notification.NotifierThread;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -133,6 +134,10 @@ public class GuiController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        NotifierThread notifier = new NotifierThread();
+        notifier.setDaemon(true);
+        notifier.start();
+        
         ObservableList boxes = grid.getChildren();
         days = FXCollections.observableArrayList();
         Date currDay;

@@ -6,10 +6,13 @@
 package calendar.main;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -70,5 +73,36 @@ public class Tools {
         return df.format(date);
     }
     
+    public static Date now() { return java.util.Calendar.getInstance().getTime(); }
+    
+    public static Date stringToTime(String string) {
+        DateFormat format = new SimpleDateFormat("kk:mm");
+        try {
+            Date date = format.parse(string);
+            return date;
+        } catch (ParseException ex) {
+            return null;
+        }
+    }
+    
+    public static Date stringToDate(String string) {
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        try {
+            Date date = format.parse(string);
+            return date;
+        } catch (ParseException ex) {
+            return null;
+        }
+    }
+    
+    public static Date stringToDateTime(String string) {
+        DateFormat format = new SimpleDateFormat("dd.MM.yyyy kk:mm");
+        try {
+            Date date = format.parse(string);
+            return date;
+        } catch (ParseException ex) {
+            return null;
+        }
+    }
     
 }

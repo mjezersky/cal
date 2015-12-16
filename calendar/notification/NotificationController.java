@@ -1,5 +1,6 @@
 package calendar.notification;
 
+import java.awt.Toolkit;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -35,6 +36,7 @@ public class NotificationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         notifInst = Notification.getCurrentInstance();
+        Toolkit.getDefaultToolkit().beep(); // pipnuti
         
         initSetup(); // inicializace obsahu
         
