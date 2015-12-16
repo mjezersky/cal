@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: #FFF;
+    -fx-background-color: linear-gradient(to bottom, #d3e5ec, #94aaff);
 }
 
 .gridCell {
