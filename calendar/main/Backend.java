@@ -75,14 +75,23 @@ public  class Backend {
         }
         else {        
             note = (Element) notes.item(0);
-            System.out.println(note.getTextContent());
+            System.out.println("ASDASFASDF"+note.getTextContent());
 
         }
-        note.setTextContent(str);
-        day.appendChild(note);
-        root.appendChild(day);
+        if (str.equals("")){
+               day.removeChild(note);
+            //neexistuji eventy a poznamka je prazdna
+            if (day.getChildNodes().getLength()==0) {
+                System.out.println("Empty day");
+                root.removeChild(day);
+            }
+        }
+        else {
+             note.setTextContent(str);
+             day.appendChild(note);
+             root.appendChild(day);
+        }
 
-      
         XMLSerializer serializer = new XMLSerializer();
         try {
             serializer.setOutputCharStream(new java.io.FileWriter("src/events.xml"));
