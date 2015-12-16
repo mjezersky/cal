@@ -110,12 +110,8 @@ public  class Backend {
     }
 
   
-  
-  
-  
-  
     public void deleteEvent(String date, String time){
-        Element day;
+        Element day,e;
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder=null;
         try {
@@ -141,10 +137,13 @@ public  class Backend {
             NodeList childNodes=day.getChildNodes();
             for (int i=0;i<childNodes.getLength();i++) {
                 Node cn=childNodes.item(i);
-                Element e=(Element) cn;
-                if (e.getAttribute("time").equals(time)){
-                    System.out.println("Deleting event");
-                    day.removeChild(cn);
+                if (cn.getNodeType() == Node.ELEMENT_NODE) {
+                    e=(Element) cn;
+                    if (e.getAttribute("time").equals(time)){
+                        System.out.println("Deleting event");
+                        day.removeChild(cn);
+                    }
+                    
                 }
             }
         }
