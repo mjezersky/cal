@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -62,9 +63,17 @@ public class Tools {
         return days;
     }
     
-    public static int getWeekNumber(int displayedYear, int displayedMonth, int displayedDay) {
-        java.util.Date javaDate = new java.util.Date();
-        java.util.Calendar cal = new GregorianCalendar(displayedYear, displayedMonth, displayedDay);
+    public static int getWeekNumber(String dateString) {
+        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        Date date;
+        try {
+            date = df.parse(dateString);
+        } catch (ParseException ex) {
+            return -1;
+        }
+
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.setTime(date);
         return cal.get(java.util.Calendar.WEEK_OF_YEAR);
     }
     
@@ -102,6 +111,30 @@ public class Tools {
             return date;
         } catch (ParseException ex) {
             return null;
+        }
+    }
+    
+    public static String getDayNumberString(Date date) {
+        DateFormat df = new SimpleDateFormat("dd");
+        String s = df.format(date);
+        return Integer.toString(Integer.parseInt(s));
+    }
+    
+    public static String monthToName(int monthInt) {
+        switch (monthInt) {
+            case 0: return "Leden";
+            case 1: return "Únor";
+            case 2: return "Březen";
+            case 3: return "Duben";
+            case 4: return "Květen";
+            case 5: return "Červen";
+            case 6: return "Červenec";
+            case 7: return "Srpen";
+            case 8: return "Září";
+            case 9: return "Říjen";
+            case 10: return "Listopad";
+            case 11: return "Prosinec";
+            default: return "-";
         }
     }
     

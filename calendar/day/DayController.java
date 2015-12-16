@@ -38,15 +38,12 @@ public class DayController implements Initializable {
         
         
         try {
-            notes = Calendar.backend.getNotes("15.12.2015");            
-            events = FXCollections.observableArrayList(Calendar.backend.getEvents("15.12.2015"));     
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(DayController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(DayController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(DayController.class.getName()).log(Level.SEVERE, null, ex);
+            notes = Calendar.backend.getNotes("19.12.2015");            
+            events = FXCollections.observableArrayList(Calendar.backend.getEvents("19.12.2015"));     
+        } catch (NullPointerException ex) {
+            events = null;
         }
+        
 
         if (events != null) {
             ObservableList eventsText = FXCollections.observableArrayList(new ArrayList<String>());

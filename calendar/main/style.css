@@ -17,3 +17,16 @@
 .gridCell.selectedDay.unimportant {
     -fx-background-color: #999999;
 }
+
+.label {
+    -fx-font: bold 23px "System";
+    -fx-text-fill: #3e3e3e;
+}
+
+.gridCell .today {
+    -fx-text-fill: #6600cc;
+}
+
+.dayLabel {
+    -fx-font: 15px "System";
+}

@@ -20,6 +20,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -33,7 +34,11 @@ public class GuiController implements Initializable {
     private ObservableList days; // zobrazovane dny
     private Contacts contacts;
     @FXML private ListView contactList;
+    @FXML private Label topLabel;
     @FXML private Button testButton;
+    @FXML private VBox weeksBox;
+    
+    ObservableList weeksBoxLabels;
     
     private int currYear = 2015;
     private int currMonth = 11;
@@ -85,6 +90,7 @@ public class GuiController implements Initializable {
             currMonth = 0;
             currYear += 1;
         }
+        Day.unselectDay();
         redrawGrid();
     }
 
@@ -94,7 +100,13 @@ public class GuiController implements Initializable {
             currMonth = 11;
             currYear -= 1;
         }
+        Day.unselectDay();
         redrawGrid();
+    }
+    
+    private void setWeekNumber(int weekIndex, int weekNumber) {
+        Label currLabel = (Label) weeksBoxLabels.get(weekIndex);
+        currLabel.setText(Integer.toString(weekNumber));
     }
     
     public void redrawGrid() {
@@ -102,13 +114,21 @@ public class GuiController implements Initializable {
         int firstDay = Tools.getFirstDayIndex(currYear, currMonth);
         int lastDay = Tools.getLastDayIndex(currYear, currMonth);
         
+        topLabel.setText(Tools.monthToName(currMonth)+" "+Integer.toString(currYear));
         Day currDay;
-        
         for(int i=0; i<days.size(); i++) {
             currDay = (Day) days.get(i);
             currDay.setDate( (Date) displayedDays.get(i) );
             if (i<firstDay || i>lastDay) currDay.setUnimportant(true);
             else currDay.setUnimportant(false);
+            if ( Tools.getDateString(currDay.getDate()).equals(Tools.getDateString(Tools.now())) )  currDay.setToday(true);
+            else currDay.setToday(false);
+            
+            //nastaveni cisla tydne
+            if (i%7==0) {
+                int weeknum = Tools.getWeekNumber(Tools.getDateString((Date) displayedDays.get(i)));
+                setWeekNumber(i/7, weeknum);
+            }
         }
     }
     
@@ -136,7 +156,9 @@ public class GuiController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         NotifierThread notifier = new NotifierThread();
         notifier.setDaemon(true);
-        notifier.start();
+        notifier.start(); // START
+        
+        weeksBoxLabels = weeksBox.getChildren();
         
         ObservableList boxes = grid.getChildren();
         days = FXCollections.observableArrayList();
@@ -150,6 +172,7 @@ public class GuiController implements Initializable {
         
         contacts = new Contacts(this); // inicializace kontaktu
         reloadContacts();
+        //Calendar.backend.deleteEvent("16.12.2015", "13:27");
         //Tools.getDateString(Day.getSelected().getDate());
     }    
     

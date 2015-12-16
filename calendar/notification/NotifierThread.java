@@ -33,11 +33,8 @@ public class NotifierThread extends Thread {
                 Thread.currentThread().interrupt();
             }
             // vezmu seznam udalosti za dnesni den
-            try {
-                events = Calendar.backend.getEvents(Tools.getDateString(Tools.now()));
-            } catch(ParserConfigurationException | SAXException | IOException ex) {
-                Logger.getLogger(NotifierThread.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            events = Calendar.backend.getEvents(Tools.getDateString(Tools.now()));
+            
             System.out.println(Tools.getDateString(Tools.now()));
             System.out.println(events==null);
             if (events != null) {
@@ -55,6 +52,7 @@ public class NotifierThread extends Thread {
                                     Notification n = new Notification();
                                     NotificationData test = new NotificationData();
                                     test.setText(currEvt.date+" "+currEvt.time);
+                                    Calendar.backend.deleteEvent(currEvt.date, currEvt.time);
                                     n.show(test);
                                 }
                         });
