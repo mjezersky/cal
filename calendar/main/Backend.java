@@ -39,6 +39,8 @@ public  class Backend {
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
         Document document = documentBuilder.parse("src/events.xml");
         Element root = document.getDocumentElement();
+        System.out.println(root.getTagName());
+
         day=document.getElementById(e.date);
         if (day==null){
             day = document.createElement("day");
@@ -47,8 +49,8 @@ public  class Backend {
 
         event.setAttribute("time",e.time);
         Element text = document.createElement("text");
-        text.appendChild(document.createTextNode(e.text));
-        day.appendChild(text);
+        text.setTextContent(e.text);
+        day.appendChild(event);
 
         event.appendChild(text);
         
@@ -57,7 +59,7 @@ public  class Backend {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         System.out.println("Saving");
-        StreamResult result = new StreamResult("contacts.xml");
+        StreamResult result = new StreamResult("src/events.xml");
         transformer.transform(source, result);
     }
 
