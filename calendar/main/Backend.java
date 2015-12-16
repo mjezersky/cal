@@ -139,6 +139,7 @@ public  class Backend {
                 }
             }
         }
+        if (!day.hasChildNodes()){root.removeChild(day);}
         XMLSerializer serializer = new XMLSerializer();
         try {
             serializer.setOutputCharStream(new java.io.FileWriter("src/events.xml"));
@@ -300,7 +301,102 @@ public  class Backend {
     return notes;
     }
     
- 
+   public void deleteContact(String name){
+
+           Element contact;
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder=null;
+        try {
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Document document=null;
+        try {
+            document = documentBuilder.parse("src/contacts.xml");
+        } catch (SAXException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Element root = document.getDocumentElement();
+
+        contact=document.getElementById(name);
+        if (contact==null){
+            return;
+        }
+        root.removeChild(contact);
+               
+            
+        
+        XMLSerializer serializer = new XMLSerializer();
+        try {
+            serializer.setOutputCharStream(new java.io.FileWriter("src/contacts.xml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        OutputFormat format = new OutputFormat();
+        format.setStandalone(true);
+        serializer.setOutputFormat(format);
+        try {
+            serializer.serialize(document);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+   
+    
+  public void addContact(Contact c){
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder=null;
+        try {
+            documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Document document=null;
+        try {
+            document = documentBuilder.parse("src/contacts.xml");
+        } catch (SAXException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Element root = document.getDocumentElement();
+
+        
+        if (document.getElementById(c.name)!=null){
+            System.out.println("Contact already exists");
+            return;
+        }
+        Element contact = document.createElement("contact");
+
+        contact.setAttribute("name",c.name);
+        Element desc = document.createElement("desc");
+        desc.setTextContent(c.desc);
+        contact.appendChild(desc);
+        
+        root.appendChild(contact);
+      
+        XMLSerializer serializer = new XMLSerializer();
+        try {
+            serializer.setOutputCharStream(new java.io.FileWriter("src/contacts.xml"));
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        OutputFormat format = new OutputFormat();
+        format.setStandalone(true);
+        serializer.setOutputFormat(format);
+        try {
+            serializer.serialize(document);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }  
+    
+    
+    
   public ArrayList getContacts()  throws ParserConfigurationException, SAXException, IOException {
         ArrayList l=new ArrayList<Contact>();   
         String name;
