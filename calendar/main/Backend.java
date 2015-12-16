@@ -101,6 +101,10 @@ public  class Backend {
     }
 
   
+  
+  
+  
+  
     public void deleteEvent(String date, String time){
         Element day;
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -206,13 +210,25 @@ public  class Backend {
     
     
     
-  public ArrayList getEvents(String date)  throws ParserConfigurationException, SAXException, IOException {
+  public ArrayList getEvents(String date) {
         ArrayList l=new ArrayList<Event>();   
         String text, time;
         File f = new File("src/events.xml");
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	Document doc = dBuilder.parse(f);
+	DocumentBuilder dBuilder = null;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+	Document doc = null;
+        try {
+            doc = dBuilder.parse(f);
+        } catch (SAXException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
         doc.getDocumentElement().normalize();			
 	Element day = (Element) doc.getElementById(date);
         if (day==null) return null;
@@ -239,13 +255,25 @@ public  class Backend {
  
   
   
-    public String getNotes(String date)  throws ParserConfigurationException, SAXException, IOException {
+    public String getNotes(String date){
 
         String notes=""; 
         File f = new File("src/events.xml");
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	Document doc = dBuilder.parse(f);
+	DocumentBuilder dBuilder = null;
+        try {
+            dBuilder = dbFactory.newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
+	Document doc = null;
+        try {
+            doc = dBuilder.parse(f);
+        } catch (SAXException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Backend.class.getName()).log(Level.SEVERE, null, ex);
+        }
         doc.getDocumentElement().normalize();			
 	Element day = (Element) doc.getElementById(date);
         
