@@ -13,14 +13,16 @@ public class Calendar extends Application {
     
     public static final Backend backend = new Backend();
     public static boolean mainWindowClosed = false;
+    public static Stage primaryStage;
     
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
         
         Scene scene = new Scene(root);
-        
+        primaryStage = stage;
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.getIcons().add(new Image("images/btns/favico.png"));
         
         scene.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {

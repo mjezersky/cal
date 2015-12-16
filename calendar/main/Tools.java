@@ -5,6 +5,7 @@
  */
 package calendar.main;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,6 +15,10 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -136,6 +141,33 @@ public class Tools {
             case 11: return "Prosinec";
             default: return "-";
         }
+    }
+    
+    public static void error(String header, String text) { alert(header, text, Alert.AlertType.ERROR); }
+    public static void alert(String header, String text) { alert(header, text, Alert.AlertType.WARNING); }
+    public static void alert(String header, String text, Alert.AlertType alertType) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(Tools.class.getResourceAsStream("/images/btns/favico.png")));
+        alert.setHeaderText(header);
+        alert.setTitle("");
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+    
+    public static File chooseFile(String initialName, String initialDir, boolean save) {
+        Stage primaryStage = Calendar.primaryStage;
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("soubory XML (*.xml)", "*.xml");
+        fileChooser.getExtensionFilters().add(extFilter);
+        if (initialDir != null) fileChooser.setInitialDirectory(new File(initialDir));
+        if (initialName != null) fileChooser.setInitialFileName(initialName);
+
+        File selectedFile;
+        if (save) selectedFile = fileChooser.showSaveDialog(primaryStage);
+        else selectedFile = fileChooser.showOpenDialog(primaryStage);
+        
+        return selectedFile;
     }
     
 }

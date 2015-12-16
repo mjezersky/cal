@@ -40,7 +40,6 @@ public class Day {
     }
     
     public void setToday(boolean state) {
-        if (state) System.out.println("today set");
         label.getStyleClass().remove("today");
         if (state) label.getStyleClass().add("today");
     }
@@ -65,5 +64,10 @@ public class Day {
     
     public void showEvents(int count) {
         events = count;
+    }
+    
+    public void setHasEvent(boolean state) {
+        parent.getStyleClass().remove("hasEvent");
+        if (state) parent.getStyleClass().add("hasEvent");
     }
 }

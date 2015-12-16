@@ -58,8 +58,10 @@
            </font>
        </Label>
       <TextArea fx:id="pozn" editable="true" layoutX="310.0" layoutY="131.0" prefHeight="259.0" prefWidth="279.0" />
-      <Button fx:id="btnSave" layoutX="508.0" layoutY="96.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="75.0" text="Uložiť" />
+      <Button fx:id="btnSave" layoutX="508.0" layoutY="96.0" mnemonicParsing="false" onAction="#saveNotes" prefHeight="16.0" prefWidth="75.0" text="Uložiť" />
       <ListView fx:id="eventContainer" layoutX="14.0" layoutY="131.0" prefHeight="259.0" prefWidth="279.0" />
+      <Button layoutX="154.0" layoutY="96.0" mnemonicParsing="false" onAction="#delEvent" text="delete" />
+      <Button layoutX="228.0" layoutY="96.0" mnemonicParsing="false" onAction="#editEvent" text="edit" />
 
        <!--
        <Line endY="80.0" layoutX="250.0" layoutY="0.0" startY="10.0" /> -->

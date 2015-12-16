@@ -4,6 +4,13 @@
 
 .gridCell {
     -fx-background-color: #e2e9ff;
+    -fx-border-insets: 0 0 0 0;
+}
+
+.gridCell.hasEvent {
+    -fx-border-insets: 1 1 1 1;
+    -fx-border-width: 1 1 1 1;
+    -fx-border-color: #FF0000;
 }
 
 .gridCell.unimportant {

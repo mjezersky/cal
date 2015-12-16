@@ -104,9 +104,36 @@ public class GuiController implements Initializable {
         redrawGrid();
     }
     
+    @FXML private void importCalendar(ActionEvent evt) {
+        Tools.chooseFile("", "\\", false);
+    }
+    
+    @FXML private void exportCalendar(ActionEvent evt) {
+        Tools.chooseFile("", "\\", true);
+    }
+    
     private void setWeekNumber(int weekIndex, int weekNumber) {
         Label currLabel = (Label) weeksBoxLabels.get(weekIndex);
         currLabel.setText(Integer.toString(weekNumber));
+    }
+    
+    @FXML private void addContact(ActionEvent evt) {
+        Contact contact = new Contact("jmeno");
+        contact.desc = "popis a cislo";
+        Calendar.backend.addContact(contact);
+        reloadContacts();
+    } 
+    
+    @FXML private void delContact(ActionEvent evt) {
+        String cname = (String) contactList.getSelectionModel().getSelectedItem();
+        System.out.println(cname);
+        if (cname != null) Calendar.backend.deleteContact(cname);
+        reloadContacts();
+    }
+    
+    @FXML private void editContact(ActionEvent evt) {
+        Tools.alert("Upozornění", "funkce není implementována");
+        System.out.println("Not implemented.");
     }
     
     public void redrawGrid() {
@@ -129,6 +156,12 @@ public class GuiController implements Initializable {
                 int weeknum = Tools.getWeekNumber(Tools.getDateString((Date) displayedDays.get(i)));
                 setWeekNumber(i/7, weeknum);
             }
+            // oznaceni dne ktery obsahuje event
+            boolean hasEvent = false;
+            try { hasEvent = Calendar.backend.EventOnDay(Tools.getDateString(currDay.getDate()));
+            } catch (SAXException | ParserConfigurationException | IOException ex) { Logger.getLogger(GuiController.class.getName()).log(Level.SEVERE, null, ex); }
+
+            currDay.setHasEvent(hasEvent);
         }
     }
     

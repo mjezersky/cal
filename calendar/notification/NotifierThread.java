@@ -35,15 +35,11 @@ public class NotifierThread extends Thread {
             // vezmu seznam udalosti za dnesni den
             events = Calendar.backend.getEvents(Tools.getDateString(Tools.now()));
             
-            System.out.println(Tools.getDateString(Tools.now()));
-            System.out.println(events==null);
             if (events != null) {
                 if (!events.isEmpty()) {
                     Event currEvt = (Event) events.get(0);
                     Date now = Tools.now();
                     Date evt = Tools.stringToDateTime(currEvt.date + " " + currEvt.time);
-                    System.out.println(now);
-                    System.out.println(evt);
                     if (now.compareTo(evt) >= 0) {
                         
                         Platform.runLater(new Runnable(){

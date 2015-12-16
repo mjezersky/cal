@@ -12,11 +12,13 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ListView;
 
 import calendar.main.Calendar;
+import calendar.main.Tools;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -30,16 +32,42 @@ public class DayController implements Initializable {
     
     DayWindow dayInst;
 
-    private void initSetup() {
-        String text = dayInst.getData().getText();
-        textLabel.setText(text);
+    @FXML private void delEvent(ActionEvent e) {
+        String selectedItem = (String) eventContainer.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            String[] parts = selectedItem.split(" \\|");
+            System.out.println(parts.length);
+            if (parts.length>0) {
+                
+                String time = parts[0];
+                System.out.println(textLabel.getText());
+                System.out.println(time);
+                Calendar.backend.deleteEvent(textLabel.getText(), time);
+            }
+        }
+        refreshContent();
+    }
+    
+    @FXML private void editEvent(ActionEvent e) {
+        Tools.alert("Upozornění", "funkce není implementována");
+        System.out.println("Not implemented.");
+    }
+    
+    @FXML private void saveNotes(ActionEvent e) {
+        String date = textLabel.getText();
+        String text = pozn.getText();
+        Calendar.backend.saveNote(text, date);
+        refreshContent();
+    }
+    
+    private void refreshContent() {
         ObservableList events = null;
         String notes = null;
-        
+        String text = textLabel.getText();
         
         try {
-            notes = Calendar.backend.getNotes("19.12.2015");            
-            events = FXCollections.observableArrayList(Calendar.backend.getEvents("19.12.2015"));     
+            notes = Calendar.backend.getNotes(text);            
+            events = FXCollections.observableArrayList(Calendar.backend.getEvents(text));     
         } catch (NullPointerException ex) {
             events = null;
         }
@@ -57,6 +85,13 @@ public class DayController implements Initializable {
         if (notes != null) {
             pozn.setText(notes);
         }
+    }
+    
+    private void initSetup() {
+        String text = dayInst.getData().getText();
+        textLabel.setText(text);
+        
+        refreshContent();
         
         /*Weather tmp = new Weather();
             String temp = tmp.getTemperature();
