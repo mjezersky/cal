@@ -1,15 +1,18 @@
 package calendar.main;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Calendar extends Application {
     
     public static final Backend backend = new Backend();
+    public static boolean mainWindowClosed = false;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -19,6 +22,14 @@ public class Calendar extends Application {
         
         stage.setScene(scene);
         stage.getIcons().add(new Image("images/btns/favico.png"));
+        
+        scene.getWindow().setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                mainWindowClosed = true;
+            }
+        });
+        
         stage.show();
     }
 
