@@ -45,7 +45,7 @@ public  class Backend {
         return day != null;}
     
     
-  public void saveNote(String date, String str) {
+  public void saveNote(String str,String date) {
          Element day,note;
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder=null;
@@ -199,6 +199,9 @@ public  class Backend {
 	Document doc = dBuilder.parse(f);
         doc.getDocumentElement().normalize();			
 	Element day = (Element) doc.getElementById(date);
+        
+                if (day==null) return null;
+
 	if (day.hasChildNodes()) {
 
             NodeList nl=day.getChildNodes();
